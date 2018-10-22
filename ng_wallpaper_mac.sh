@@ -12,7 +12,7 @@ mkdir -p temp pictures
 
 # Find Site to redirect to.
 INITIAL_SITE='temp/initial_site.html'
-curl "https://www.nationalgeographic.com/photography/photo-of-the-day/"  -o ${INITIAL_SITE}
+curl -L "https://www.nationalgeographic.com/photography/photo-of-the-day/"  -o ${INITIAL_SITE}
 
 
 # Parsing HTML like this is a sin.
@@ -22,7 +22,7 @@ echo "*** Redirect to:  $IMG_HTML ***"
 echo
 
 REDIRECTED_SITE="temp/redirected_site.html"
-curl $IMG_HTML -o ${REDIRECTED_SITE}
+curl -L $IMG_HTML -o ${REDIRECTED_SITE}
 open $IMG_HTML
 
 # Another hacky bit that will fail when Nat Geo changes their image naming conventions
